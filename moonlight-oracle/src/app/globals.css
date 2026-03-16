@@ -1,0 +1,486 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-serif: var(--font-serif);
+  --color-navy: #0b1026;
+  --color-navy-light: #141b3d;
+  --color-navy-dark: #060812;
+  --color-silver: #c4cad4;
+  --color-lavender: #b8a9d4;
+  --color-gold: #d4c28e;
+  --color-mist: #7b9bb5;
+  --color-indigo: #4a4e7a;
+  --color-amber: #c9a84c;
+}
+
+body {
+  background-color: var(--color-navy);
+  color: var(--color-silver);
+  min-height: 100vh;
+}
+
+/* Moon glow pulse */
+@keyframes moonPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 36px rgba(212, 194, 142, 0.18),
+      0 0 72px rgba(212, 194, 142, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 48px rgba(212, 194, 142, 0.3),
+      0 0 96px rgba(212, 194, 142, 0.15);
+  }
+}
+
+.moon-glow {
+  animation: moonPulse 4s ease-in-out infinite;
+}
+
+/* Star twinkle */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.85; }
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--color-silver);
+  border-radius: 50%;
+  animation: twinkle var(--duration, 3s) ease-in-out var(--delay, 0s) infinite;
+}
+
+/* Button hover glow + sparkle border */
+@keyframes btnGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 12px rgba(212, 194, 142, 0.08),
+      0 0 24px rgba(184, 169, 212, 0.04),
+      inset 0 0 12px rgba(212, 194, 142, 0.02);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(212, 194, 142, 0.2),
+      0 0 40px rgba(184, 169, 212, 0.08),
+      inset 0 0 20px rgba(212, 194, 142, 0.04);
+  }
+}
+
+.btn-oracle {
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.btn-oracle::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 194, 142, 0) 0%,
+    rgba(212, 194, 142, 0) 40%,
+    rgba(212, 194, 142, 0.15) 50%,
+    rgba(212, 194, 142, 0) 60%,
+    rgba(212, 194, 142, 0) 100%
+  );
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.btn-oracle:hover {
+  animation: btnGlow 2.5s ease-in-out infinite;
+  transform: translateY(-2px);
+}
+
+.btn-oracle:hover::before {
+  opacity: 1;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 200%; }
+  100% { background-position: -200% -200%; }
+}
+
+/* Card flip */
+.card-container {
+  perspective: 900px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.card-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  transform: rotateY(180deg);
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Staggered fade-in-up */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.25s; }
+.animate-delay-3 { animation-delay: 0.4s; }
+.animate-delay-4 { animation-delay: 0.55s; }
+
+/* Soft glow for revealed card */
+@keyframes cardGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 24px rgba(212, 194, 142, 0.1),
+      0 0 48px rgba(184, 169, 212, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 0 36px rgba(212, 194, 142, 0.18),
+      0 0 72px rgba(184, 169, 212, 0.1);
+  }
+}
+
+.card-revealed-glow {
+  animation: cardGlow 3s ease-in-out infinite;
+}
+
+/* ── Settings panel slide-up ── */
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+/* ── Reduce motion ── */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+.reduce-motion .shooting-star,
+.reduce-motion .comet,
+.reduce-motion .comet-ltr,
+.reduce-motion .comet-rtl {
+  display: none !important;
+}
+
+.reduce-motion .moon-glow {
+  box-shadow: 0 0 30px rgba(212, 194, 142, 0.15), 0 0 60px rgba(212, 194, 142, 0.08);
+}
+
+.reduce-motion .card-revealed-glow {
+  box-shadow: 0 0 20px rgba(212, 194, 142, 0.1), 0 0 40px rgba(184, 169, 212, 0.05);
+}
+
+.reduce-motion .star {
+  opacity: 0.5;
+}
+
+/* ── Nebula clouds ── */
+@keyframes nebulaDrift {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(var(--nebula-drift, 15px), calc(var(--nebula-drift, 15px) * -0.4)); }
+  66% { transform: translate(calc(var(--nebula-drift, 15px) * -0.6), calc(var(--nebula-drift, 15px) * 0.5)); }
+}
+
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(28px);
+  will-change: transform;
+  animation: nebulaDrift var(--nebula-duration, 60s) ease-in-out infinite;
+  pointer-events: none;
+}
+
+.reduce-motion .nebula {
+  animation: none;
+}
+
+/* Decorative gold gradient divider */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  opacity: 0.25;
+}
+
+/* ── Shooting Stars ── */
+@keyframes shootingStar {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--shoot-angle)) translateX(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--shoot-angle)) translateX(var(--shoot-length));
+  }
+}
+
+.shooting-star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--shoot-head);
+  box-shadow:
+    0 0 8px var(--shoot-head),
+    0 0 16px var(--shoot-trail);
+  animation: shootingStar var(--shoot-duration) ease-out forwards;
+  will-change: transform, opacity;
+  /* Larger click target */
+  padding: 8px;
+  margin: -8px;
+}
+
+.shooting-star::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  width: var(--shoot-length);
+  height: 2px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, var(--shoot-trail), var(--shoot-head));
+  border-radius: 1px;
+}
+
+/* ── Comets (GPU-accelerated with transform) ── */
+@keyframes cometLTR {
+  0% {
+    opacity: 0;
+    transform: translateX(-5vw);
+  }
+  3% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% {
+    opacity: 0;
+    transform: translateX(105vw);
+  }
+}
+
+@keyframes cometRTL {
+  0% {
+    opacity: 0;
+    transform: translateX(105vw);
+  }
+  3% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% {
+    opacity: 0;
+    transform: translateX(-5vw);
+  }
+}
+
+.comet {
+  position: absolute;
+  left: 0;
+  width: var(--comet-size);
+  height: var(--comet-size);
+  border-radius: 50%;
+  background: var(--comet-head);
+  box-shadow:
+    0 0 6px var(--comet-glow),
+    0 0 14px var(--comet-trail);
+  will-change: transform, opacity;
+  /* Large click target */
+  padding: 20px;
+  margin: -20px;
+}
+
+.comet-ltr {
+  animation: cometLTR var(--comet-duration) linear forwards;
+}
+
+.comet-ltr::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  width: 120px;
+  height: 1.5px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, var(--comet-trail), var(--comet-glow));
+  border-radius: 1px;
+}
+
+.comet-rtl {
+  animation: cometRTL var(--comet-duration) linear forwards;
+}
+
+.comet-rtl::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 120px;
+  height: 1.5px;
+  transform: translateY(-50%);
+  background: linear-gradient(270deg, transparent, var(--comet-trail), var(--comet-glow));
+  border-radius: 1px;
+}
+
+/* ── Wisdom tooltip ── */
+.wisdom-tooltip {
+  animation: tooltipAppear 0.4s ease forwards;
+}
+
+@keyframes tooltipAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Soundscape UI ── */
+
+/* Animated audio bars */
+.soundscape-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.soundscape-bar {
+  display: inline-block;
+  width: 2.5px;
+  background: var(--color-gold);
+  border-radius: 1px;
+  opacity: 0.7;
+  animation: barBounce 0.8s ease-in-out infinite;
+}
+
+.soundscape-bar:nth-child(1) { height: 5px; animation-delay: 0s; }
+.soundscape-bar:nth-child(2) { height: 10px; animation-delay: 0.15s; }
+.soundscape-bar:nth-child(3) { height: 6px; animation-delay: 0.3s; }
+
+@keyframes barBounce {
+  0%, 100% { transform: scaleY(0.5); }
+  50% { transform: scaleY(1.2); }
+}
+
+/* Active track pill glow */
+.soundscape-active {
+  box-shadow: 0 0 14px rgba(212, 194, 142, 0.12);
+}
+
+/* Floating button glow */
+@keyframes soundBtnGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(212, 194, 142, 0.1); }
+  50% { box-shadow: 0 0 20px rgba(212, 194, 142, 0.18); }
+}
+
+.soundscape-btn-glow {
+  animation: soundBtnGlow 3s ease-in-out infinite;
+}
+
+/* Backdrop entrance */
+.soundscape-backdrop-enter {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Volume slider */
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-indigo), var(--color-gold));
+  opacity: 0.6;
+  outline: none;
+  transition: opacity 0.2s;
+}
+
+.volume-slider:hover {
+  opacity: 0.85;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(212, 194, 142, 0.3);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 8px rgba(212, 194, 142, 0.3);
+}
+
+/* Custom scrollbar for soundscape tray */
+.soundscape-scroll::-webkit-scrollbar {
+  width: 3px;
+}
+
+.soundscape-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.soundscape-scroll::-webkit-scrollbar-thumb {
+  background: rgba(74, 78, 122, 0.3);
+  border-radius: 3px;
+}
+
+.soundscape-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(74, 78, 122, 0.3) transparent;
+}
