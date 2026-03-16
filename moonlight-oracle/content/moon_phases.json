@@ -1,0 +1,50 @@
+[
+  {
+    "phase": "New Moon",
+    "emoji": "\ud83c\udf11",
+    "message": "A time for quiet beginnings and setting intentions.",
+    "mood": "stillness"
+  },
+  {
+    "phase": "Waxing Crescent",
+    "emoji": "\ud83c\udf12",
+    "message": "Your intentions are taking shape. Nurture them gently.",
+    "mood": "hope"
+  },
+  {
+    "phase": "First Quarter",
+    "emoji": "\ud83c\udf13",
+    "message": "A moment of decision. Trust your momentum.",
+    "mood": "determination"
+  },
+  {
+    "phase": "Waxing Gibbous",
+    "emoji": "\ud83c\udf14",
+    "message": "Almost full. Refine what you\u2019ve been building.",
+    "mood": "anticipation"
+  },
+  {
+    "phase": "Full Moon",
+    "emoji": "\ud83c\udf15",
+    "message": "Everything is illuminated. See clearly tonight.",
+    "mood": "clarity"
+  },
+  {
+    "phase": "Waning Gibbous",
+    "emoji": "\ud83c\udf16",
+    "message": "Share what you\u2019ve learned. Gratitude opens doors.",
+    "mood": "gratitude"
+  },
+  {
+    "phase": "Last Quarter",
+    "emoji": "\ud83c\udf17",
+    "message": "Release what no longer serves you.",
+    "mood": "release"
+  },
+  {
+    "phase": "Waning Crescent",
+    "emoji": "\ud83c\udf18",
+    "message": "Rest and restore. A new cycle is near.",
+    "mood": "rest"
+  }
+]

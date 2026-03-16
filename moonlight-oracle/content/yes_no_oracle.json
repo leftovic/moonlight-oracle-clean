@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "answer": "Yes",
+    "tone": "clear",
+    "message": "The path is open. Move forward with trust."
+  },
+  {
+    "id": 2,
+    "answer": "No",
+    "tone": "clear",
+    "message": "Not tonight. Let the moment pass and wait for better timing."
+  },
+  {
+    "id": 3,
+    "answer": "Maybe",
+    "tone": "neutral",
+    "message": "The answer is still forming beneath the surface."
+  },
+  {
+    "id": 4,
+    "answer": "Yes",
+    "tone": "gentle",
+    "message": "A quiet yes. Let it unfold naturally."
+  },
+  {
+    "id": 5,
+    "answer": "No",
+    "tone": "gentle",
+    "message": "This door is closed for now. Rest and return later."
+  },
+  {
+    "id": 6,
+    "answer": "Maybe",
+    "tone": "mystical",
+    "message": "The moon keeps this answer hidden a little longer."
+  },
+  {
+    "id": 7,
+    "answer": "Yes",
+    "tone": "hopeful",
+    "message": "There is promise here. Trust the small spark."
+  },
+  {
+    "id": 8,
+    "answer": "No",
+    "tone": "protective",
+    "message": "This is not your burden to carry tonight."
+  },
+  {
+    "id": 9,
+    "answer": "Maybe",
+    "tone": "reflective",
+    "message": "Pause. A better question may reveal the answer."
+  },
+  {
+    "id": 10,
+    "answer": "Yes",
+    "tone": "playful",
+    "message": "The stars are smirking. That looks like a yes."
+  },
+  {
+    "id": 11,
+    "answer": "No",
+    "tone": "playful",
+    "message": "The moon says no, and with a little attitude."
+  },
+  {
+    "id": 12,
+    "answer": "Maybe",
+    "tone": "dreamy",
+    "message": "Neither yes nor no. Drift a little longer."
+  }
+]

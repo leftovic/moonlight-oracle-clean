@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "Bash(ls:*)",
+      "Bash(python3:*)",
+      "Bash(cd:*)",
+      "Bash(npm install:*)",
+      "Bash(node:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(find:*)"
+    ]
+  }
+}

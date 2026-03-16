@@ -1,0 +1,41 @@
+# dependencies
+node_modules
+/.pnp
+.pnp.*
+__pycache__
+
+# next.js
+/.next/
+/out/
+
+# build
+/build
+/dist
+
+# env
+.env
+.env*.local
+
+# misc
+.DS_Store
+*.pem
+coverage
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+assets/audio/*.mp3
+public/audio/*.mp3
+
+assets/audio/*
+public/audio/*
